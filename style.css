@@ -1,35 +1,69 @@
-h1{
-    text-align: center;
+
+.box {
+  /* estilos atuais... */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
-body
-{
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    display: flex;             
-    height: 100vh;             
-  }
-  
-  .box {
-    flex: 1;                   
-    padding: 20px;
-    color: white;
-    font-size: 1.5em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .box:nth-child(1) {
-    background-color: #fa72b4;
-  }
-  .box:nth-child(2) {
-    background-color: #f9d2fa;
-  }
-  .box:nth-child(3) {
-    background-color: #ce7efa;
-  }
-  
+
+.box:hover {
+  transform: scale(1.05); /* aumenta 5% */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10; /* para ficar "acima" dos outros */
+}/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  background: #eee;
+  flex: 0 0 auto;
+}
+
+.container {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 10px; /* espaçamento entre caixas */
+  padding: 20px;
+  height: calc(100vh - 80px); /* 100vh menos espaço do h1 e padding */
+}
+
+.box {
+  flex: 1; /* ocupam igualmente o espaço */
+  background-color: #e48ddd;
+  border-radius: 8px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.box:nth-child(1) {
+  background-color: #fa72b4;
+}
+
+.box:nth-child(2) {
+  background-color: #f9d2fa;
+  color: #333;
+}
+
+.box:nth-child(3) {
+  background-color: #ce7efa;
+}
+
+p {
+  line-height: 1.5;
+}
