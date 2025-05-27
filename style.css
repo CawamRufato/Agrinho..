@@ -1,15 +1,4 @@
-
-.box {
-  /* estilos atuais... */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.box:hover {
-  transform: scale(1.05); /* aumenta 5% */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  z-index: 10; /* para ficar "acima" dos outros */
-}/* Reset básico */
+/* RESET E BASE */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,29 +6,41 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh; /* corrigido */
   display: flex;
   flex-direction: column;
+  background: linear-gradient(to bottom right, #ffe6f0, #fff0f5); /* fundo rosa claro */
+  background-attachment: fixed;
+  background-size: cover;
+  color: #333;
+  font-size: 18px; /* aumenta fonte base */
 }
 
+/* TÍTULO PRINCIPAL */
 h1 {
   text-align: center;
   padding: 20px;
-  background: #eee;
-  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.6);
+  font-size: 3em; /* tamanho maior */
+  color: #5a2a6e;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
+/* CONTAINER DAS RECEITAS */
 .container {
   flex: 1 1 auto;
   display: flex;
-  gap: 10px; /* espaçamento entre caixas */
+  flex-wrap: wrap;
+  gap: 10px;
   padding: 20px;
-  height: calc(100vh - 80px); /* 100vh menos espaço do h1 e padding */
+  height: calc(100vh - 80px);
+  overflow-y: auto;
 }
 
+/* CARTÕES DE RECEITA */
 .box {
-  flex: 1; /* ocupam igualmente o espaço */
+  flex: 1 1 300px;
   background-color: #e48ddd;
   border-radius: 8px;
   padding: 20px;
@@ -49,21 +50,100 @@ h1 {
   justify-content: flex-start;
   overflow-y: auto;
   min-height: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-size: 1.1em; /* aumenta texto interno */
 }
 
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+/* ESPECÍFICOS PARA CADA BOX */
 .box:nth-child(1) {
   background-color: #fa72b4;
+  background-image: url('img/coxinha.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgb(0, 92, 31);
 }
 
 .box:nth-child(2) {
-  background-color: #f9d2fa;
-  color: #333;
+  background-color: #f04296c9;
+  background-image: url('img/morango.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #25092c;
 }
 
 .box:nth-child(3) {
   background-color: #ce7efa;
 }
 
+/* SOBREPOSIÇÃO (overlay) PARA TEXTO VISÍVEL */
+.box:nth-child(1)::before,
+.box:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(228, 216, 216, 0.4); /* overlay claro */
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.box:nth-child(1) > *,
+.box:nth-child(2) > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* TÍTULOS E PARÁGRAFOS */
+h2 {
+  margin-bottom: 10px;
+  font-size: 1.6em;
+}
+
+h3 {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 1.2em;
+}
+
 p {
-  line-height: 1.5;
+  line-height: 1.6; 
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+/* LISTAS */
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 1.05em;
+}
+
+/* ÁUDIO */
+audio {
+  width: 100%;
+  margin: 10px 0 15px;
+  border-radius: 5px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .box {
+    flex: 1 1 auto;
+  }
 }
