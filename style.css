@@ -1,4 +1,3 @@
-/* RESET E BASE */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,27 +6,25 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  height: 100vh; /* corrigido */
+  height: 100vh; 
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom right, #ffe6f0, #fff0f5); /* fundo rosa claro */
+  background: linear-gradient(to bottom right, #ffe6f0, #fff0f5); 
   background-attachment: fixed;
   background-size: cover;
   color: #333;
-  font-size: 18px; /* aumenta fonte base */
+  font-size: 18px;
 }
 
-/* TÍTULO PRINCIPAL */
 h1 {
   text-align: center;
   padding: 20px;
   background: rgba(255, 255, 255, 0.6);
-  font-size: 3em; /* tamanho maior */
+  font-size: 3em;
   color: #5a2a6e;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-/* CONTAINER DAS RECEITAS */
 .container {
   flex: 1 1 auto;
   display: flex;
@@ -38,7 +35,6 @@ h1 {
   overflow-y: auto;
 }
 
-/* CARTÕES DE RECEITA */
 .box {
   flex: 1 1 300px;
   background-color: #e48ddd;
@@ -54,7 +50,7 @@ h1 {
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   position: relative;
-  font-size: 1.1em; /* aumenta texto interno */
+  font-size: 1.1em;
 }
 
 .box:hover {
@@ -63,14 +59,13 @@ h1 {
   z-index: 10;
 }
 
-/* ESPECÍFICOS PARA CADA BOX */
 .box:nth-child(1) {
   background-color: #fa72b4;
   background-image: url('img/coxinha.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: rgb(0, 92, 31);
+  color: #25092c;
 }
 
 .box:nth-child(2) {
@@ -84,27 +79,32 @@ h1 {
 
 .box:nth-child(3) {
   background-color: #ce7efa;
+  background-image: url('img/bolo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #25092c;
 }
 
-/* SOBREPOSIÇÃO (overlay) PARA TEXTO VISÍVEL */
 .box:nth-child(1)::before,
-.box:nth-child(2)::before {
+.box:nth-child(2)::before,
+.box:nth-child(3)::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(228, 216, 216, 0.4); /* overlay claro */
+  background: rgba(228, 216, 216, 0.4); 
   border-radius: 8px;
   pointer-events: none;
   z-index: 0;
 }
 
 .box:nth-child(1) > *,
-.box:nth-child(2) > * {
+.box:nth-child(2) > *,
+.box:nth-child(3) > * {
   position: relative;
   z-index: 1;
 }
 
-/* TÍTULOS E PARÁGRAFOS */
 h2 {
   margin-bottom: 10px;
   font-size: 1.6em;
@@ -122,21 +122,18 @@ p {
   font-size: 1em;
 }
 
-/* LISTAS */
 ul, ol {
   padding-left: 20px;
   margin-bottom: 10px;
   font-size: 1.05em;
 }
 
-/* ÁUDIO */
 audio {
   width: 100%;
   margin: 10px 0 15px;
   border-radius: 5px;
 }
 
-/* RESPONSIVO */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
